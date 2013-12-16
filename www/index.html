@@ -27,53 +27,46 @@
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery.mobile-1.3.2.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery.i18n.properties-1.0.9.js"></script>
         <title>Hello World</title>
     </head>
     <body>
 	    <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript">
             app.initialize();
+			$(document).ready(function() {
+				jQuery.i18n.properties({
+					name:'Messages', 
+					path:'res/lang/', 
+					mode:'both',
+					language:'de_DE'
+				});
+				$("div[id^='msg_']").each(function() {
+					$div = $(this);
+					// get pure id of message key, assumeing that every key has a corresponding div 
+					var id_string = "msg_"+this.id.match(/^msg_c_([a-zA-Z0-9_]*)/).slice(1)[0];
+					$div.text(jQuery.i18n.prop(id_string));
+				});
+				$("#content").load("html/home.html", '', function() {
+				
+					$("div[id^='msg_']").each(function() {
+						$div = $(this);
+						// get pure id of message key, assumeing that every key has a corresponding div 
+						var id_string = "msg_"+this.id.match(/^msg_c_([a-zA-Z0-9_]*)/).slice(1)[0];
+						$div.text(jQuery.i18n.prop(id_string));
+					});
+				
+				});
+			});
         </script>
         
 	<div id="header">
-		Header
-	</div>
-	<div data-role="page" id="home">
-		<div data-role="header" data-theme="b" data-position="fixed" data-id="footer">
-		  <a href="#home" data-icon="home" data-iconpos="notext">Home</a>
-		  <h1>Share QR</h1>
-		</div>
-		<div data-role="content">
-		  <p>Hello world!</p>
-		</div>
-		<div data-role="footer" data-theme="b" data-position="fixed" data-id="footer">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#about" data-transition="slide">page2</a></li>
-					<li><a href="#about" data-transition="slide">page3</a></li>
-				</ul>
-			</div>
-		</div>
+		<div id="msg_c_index_header" class="l18n_message"></div>
 	</div>
 
-	<div data-role="page" id="about">
-		<div data-role="header" data-theme="b" data-position="fixed" data-id="footer">
-		  <a href="#home" data-icon="home" data-iconpos="notext">Home</a>
-		  <h1>About</h1>
-		  <a href="#home" data-icon="arrow-l" data-rel="back">Back</a> 
-		</div>
-		<div data-role="content">
-		  <p>Share your favorite URLs with other mobile phone users through QR codes.</p>
-		</div>
-		<div data-role="footer" data-theme="b" data-position="fixed" data-id="footer">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#home" data-transition="slide">page2</a></li>
-					<li><a href="#home" data-transition="slide">page3</a></li>
-				</ul>
-			</div>
-		</div>
+	<div id="content">
+	
 	</div>
-
+	
     </body>
 </html>
