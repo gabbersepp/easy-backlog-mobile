@@ -22,51 +22,38 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index1.css" />
-		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.css" />
-		<script type="text/javascript" src="js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.css">
 		<script type="text/javascript" src="js/jquery/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="js/jquery/jquery.mobile-1.3.2.js"></script>
+		
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery.i18n.properties-1.0.9.js"></script>
-        <title>Hello World</title>
+        <title></title>
     </head>
     <body>
 	    <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript">
             app.initialize();
 			$(document).ready(function() {
-				jQuery.i18n.properties({
-					name:'Messages', 
-					path:'res/lang/', 
-					mode:'both',
-					language:'de_DE'
-				});
-				$("div[id^='msg_']").each(function() {
-					$div = $(this);
-					// get pure id of message key, assumeing that every key has a corresponding div 
-					var id_string = "msg_"+this.id.match(/^msg_c_([a-zA-Z0-9_]*)/).slice(1)[0];
-					$div.text(jQuery.i18n.prop(id_string));
-				});
-				$("#content").load("html/home.html", '', function() {
-				
-					$("div[id^='msg_']").each(function() {
-						$div = $(this);
-						// get pure id of message key, assumeing that every key has a corresponding div 
-						var id_string = "msg_"+this.id.match(/^msg_c_([a-zA-Z0-9_]*)/).slice(1)[0];
-						$div.text(jQuery.i18n.prop(id_string));
-					});
-				
-				});
+				CONTENT.initializeL18n('de_DE');
+				CONTENT.loadHeader("html/header.html");
+				CONTENT.loadContent("html/home.html");
+				CONTENT.loadFooter("html/footer.html");
 			});
         </script>
         
-	<div id="header">
-		<div id="msg_c_index_header" class="l18n_message"></div>
-	</div>
+		<div id="header">
+		</div>
 
-	<div id="content">
-	
-	</div>
-	
+		<div id="content">
+		
+		</div>
+		
+		<div id="footer">
+		</div>
     </body>
 </html>
