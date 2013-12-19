@@ -20,6 +20,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+		window.Content = new Content(new jQueryL18nImpl());
     },
     // Bind Event Listeners
     //

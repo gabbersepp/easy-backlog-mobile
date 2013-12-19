@@ -10,10 +10,13 @@
 		<link rel="stylesheet" href="css/foundation.css"/>
 		<script type="text/javascript" src="js/jquery/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery.i18n.properties-1.0.9.js"></script>
-		<script type="text/javascript" src="js/modernizr.js"></script>
+		<script type="text/javascript" src="js/foundation/modernizr.js"></script>
 
+		<script type="text/javascript" src="js/interface/ICommon.js"></script>
+		<script type="text/javascript" src="js/interface/IjQueryL18n.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
-		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/impl/common.js"></script>
+		<script type="text/javascript" src="js/impl/jQueryL18nImpl.js"></script>
         <title></title>
     </head>
     <body>
@@ -21,10 +24,10 @@
         <script type="text/javascript">
             app.initialize();
 			$(document).ready(function() {
-				CONTENT.initializeL18n('de_DE');
-				CONTENT.loadHeader("html/header.html");
-				CONTENT.loadContent("html/home.html");
-				CONTENT.loadFooter("html/footer.html");
+				Content.initializeL18n('de_DE');
+				Content.loadHeader("html/header.html");
+				Content.loadContent("html/home.html");
+				Content.loadFooter("html/footer.html");
 			});
         </script>
         
@@ -37,9 +40,6 @@
 		
 		<div id="footer">
 		</div>
-				<script type="text/javascript" src="js/foundation.min.js"></script>
-		<script> $(function() {
-  //$(document).foundation();
-}); </script>
+		<script type="text/javascript" src="js/foundation/foundation.min.js"></script>
     </body>
 </html>
