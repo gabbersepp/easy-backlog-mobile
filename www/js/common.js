@@ -20,6 +20,7 @@ CONTENT = {
 	loadContent: function(path) {
 		$('#content').load(path, '', function() {
 			CONTENT.loadMessages('#content');
+			$(document).foundation();
 		});
 	},
 	
