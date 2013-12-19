@@ -9,11 +9,12 @@ Content.prototype.initializeL18n = function(lang) {
 };
 
 Content.prototype.loadMessages = function(withinDivId) {
+	var j = this.jQueryL18n;
 	$(withinDivId + " div[id^='msg_']").each(function() {
 		$div = $(this);
 		// get pure id of message key, assuming that every key has a corresponding div 
 		var id_string = "msg_"+this.id.match(/^msg_c_([a-zA-Z0-9_]*)/).slice(1)[0];
-		$div.text(jQueryL18n.getMsg(id_string));
+		$div.text(j.getMsg(id_string));
 	});
 };
 	
