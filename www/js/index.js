@@ -21,6 +21,7 @@ var app = {
     initialize: function() {
         this.bindEvents();
 		window.Content = new Content(new jQueryL18nImpl());
+		window.EasyBacklog = new EasyBacklogImpl("https://easybacklog.com/api", conf_apiKey);
     },
     // Bind Event Listeners
     //

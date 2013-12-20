@@ -8,7 +8,7 @@ describe("Test Easybacklog API", function() {
 	it("login with api key should success", function() {
 		var ready = false, success = false, cSuccess = function(data) {success = true; ready = true;}, cFail = function(data) {success = false; ready = true;};
 		runs(function() {
-			this.easyBacklog.loginCheck("/accounts.json", cSuccess, cFail);
+			this.easyBacklog.loginCheck(cSuccess, cFail);
 		});
 		waitsFor(function() {
 			return ready;
