@@ -1,12 +1,21 @@
-describe("test", function() {
-	it("asd", function() {
-		var flag = false;
-		runs(function() {
-		var e = new EasyBacklogImpl("https://easybacklog.com/api");
-		flag = e.loginCheck("5319", "8dq1ar396q56faoati7y", "/accounts.json?api_key=8dq1ar396q56faoati7y");
+describe("Test Easybacklog API", function() {
+	var easyBacklog;
+	
+	beforeEach(function() {
+		this.easyBacklog = new EasyBacklogImpl("https://easybacklog.com/api", conf_apiKey);
 	});
-	waitsFor(function() {
-	return flag;
-	}, "asd", 5000);
+	
+	it("login with api key should success", function() {
+		var ready = false, success = false, cSuccess = function(data) {success = true; ready = true;}, cFail = function(data) {success = false; ready = true;};
+		runs(function() {
+			this.easyBacklog.loginCheck("/accounts.json", cSuccess, cFail);
+		});
+		waitsFor(function() {
+			return ready;
+		}, "authenticate", 5000);
+		
+		runs(function() {
+			expect(success).toBeTruthy();
+		});
 	});
 });

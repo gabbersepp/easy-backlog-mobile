@@ -1,3 +1,3 @@
 var IEasyBacklog = {
-	loginCheck: function(userId, apiKey, destination) {}
+	loginCheck: function(destination, callBackSuccess, callBackFail) {}
 }
