@@ -34,16 +34,20 @@
 			$(document).ready(function() {
 				if (document.location.search.indexOf("local")>0) {
 					window.Content = new Content(new jQueryL18nImpl());
-					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api", conf_apiKey));
+					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"));
 					window.Config = new ConfigInMemoryImpl();
 				}else if(document.location.search.indexOf("android")>0) {
 					window.Content = new Content(new jQueryL18nImpl());
-					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api", conf_apiKey));
+					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"));
 					window.Config = new ConfigLocaleStorageImpl();				
 				}
 				Content.initializeL18n('de_DE');
 				Content.loadHeader("html/header.html");
-				Content.loadContent("html/home.html");
+				if (typeof Config.get("easybacklog", "apiKey") === "undefined") {
+					Content.loadContent("html/login.html");
+				}else{
+					Content.loadContent("html/home.html");
+				}
 				Content.loadFooter("html/footer.html");
 			});
         </script>

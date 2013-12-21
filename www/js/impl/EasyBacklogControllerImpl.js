@@ -11,3 +11,7 @@ EasyBacklogControllerImpl.prototype.loginCheck = function(callBackFail, callBack
 EasyBacklogControllerImpl.prototype.getBacklogs = function(callBackFail, callBackSuccess) {
 	this.easyBacklogImpl.call("/accounts/"+conf_account+"/backlogs.json", callBackSuccess, callBackFail);
 };
+
+EasyBacklogControllerImpl.prototype.setApiKey = function(apiKey) {
+	this.easyBacklogImpl.setApiKey(apiKey);
+};

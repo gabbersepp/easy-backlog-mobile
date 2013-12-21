@@ -1,3 +1,4 @@
 var IEasyBacklog = {
-	call: function(callBackSuccess, callBackFail) {}
+	call: function(callBackSuccess, callBackFail) {},
+	setApiKey: function(apiKey) {}
 }

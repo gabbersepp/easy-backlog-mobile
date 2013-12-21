@@ -5,6 +5,10 @@ var EasyBacklogImpl = function(url, apiKey) {
 
 EasyBacklogImpl.prototype = Object.create(IEasyBacklog);
 
+EasyBacklogImpl.prototype.setApiKey = function(apiKey) {
+	this.apiKey = apiKey;
+};
+
 EasyBacklogImpl.prototype.call = function(destination, callBackSuccess, callBackFail) {
 	var callSuccess = callBackSuccess;
 	var callFail = callBackFail;

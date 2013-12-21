@@ -1,0 +1,21 @@
+<input type="text" name="apiKey" placeholder="" id="login_apiKey"><br>
+<input type="checkbox" name="saveApiKey" id="login_saveApiKey"><br>
+<button onclick="javascript:login();">Login</button>
+<script>
+$(document).ready(function() {
+	if(typeof conf_apiKey !== "undefined") {
+		$("#login_apiKey").attr("placeholder", conf_apiKey);
+	}
+});
+login = function() {
+	fail = function(data) {
+		alert("falsch");
+	};
+	success = function(data) {
+		Config.set("easybacklog", "apiKey", $("#login_apiKey").val());
+		alert("logged in");
+	};
+	this.EasyBacklog.setApiKey($("#login_apiKey").val());
+	this.EasyBacklog.loginCheck(fail, success);
+};
+</script>
