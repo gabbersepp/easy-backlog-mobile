@@ -1,3 +1,3 @@
 var IConfig = {
-	get: function(key) {}
+	get: function(key, attr) {}
 }
