@@ -1,3 +1,6 @@
 *
 
 !.gitignore
+!android/
+!android/build.xml
+!android/custom_rules.xml
