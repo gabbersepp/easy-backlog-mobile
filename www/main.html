@@ -24,6 +24,7 @@
 		<script type="text/javascript" src="js/impl/EasyBacklogImpl.js"></script>
 		<script type="text/javascript" src="js/impl/EasyBacklogControllerImpl.js"></script>
 		<script type="text/javascript" src="js/impl/ConfigInMemoryImpl.js"></script>
+		<script type="text/javascript" src="js/impl/ConfigLocaleStorageImpl.js"></script>
         <title></title>
     </head>
     <body>
@@ -31,6 +32,15 @@
         <script type="text/javascript">
             app.initialize();
 			$(document).ready(function() {
+				if (document.location.search.indexOf("local")>0) {
+					window.Content = new Content(new jQueryL18nImpl());
+					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api", conf_apiKey));
+					window.Config = new ConfigInMemoryImpl();
+				}else if(document.location.search.indexOf("android")>0) {
+					window.Content = new Content(new jQueryL18nImpl());
+					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api", conf_apiKey));
+					window.Config = new ConfigLocaleStorageImpl();				
+				}
 				Content.initializeL18n('de_DE');
 				Content.loadHeader("html/header.html");
 				Content.loadContent("html/home.html");
