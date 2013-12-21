@@ -1,12 +1,17 @@
-var EasyBacklogImpl = function(url, apiKey) {
+var EasyBacklogImpl = function(url, apiKey, accountId) {
 	this.url = url;
 	this.apiKey = apiKey;
+	this.accountId = accountId;
 };
 
 EasyBacklogImpl.prototype = Object.create(IEasyBacklog);
 
 EasyBacklogImpl.prototype.setApiKey = function(apiKey) {
 	this.apiKey = apiKey;
+};
+
+EasyBacklogImpl.prototype.setAccountId = function(accountId) {
+	this.accountId = accountId;
 };
 
 EasyBacklogImpl.prototype.call = function(destination, callBackSuccess, callBackFail) {

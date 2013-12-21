@@ -1,9 +1,10 @@
 <script>
 $(document).ready(function() {
-	if(!Config.get("easybacklog", "apiKey")) {
+	if(typeof Config.get("easybacklog", "apiKey") === "undefined") {
 		alert("nicht gesetzte");
 		Config.set("easybacklog", "apiKey", "qwe");
 	}
 	alert(Config.get("easybacklog", "apiKey"));
 });
 </script>
+<h1><div id="msg_c_header_header"></div></h1>

@@ -1,5 +1,6 @@
-var EasyBacklogControllerImpl = function(easyBacklogImpl) {
+var EasyBacklogControllerImpl = function(easyBacklogImpl, config) {
 	this.easyBacklogImpl = easyBacklogImpl;
+	this.config = config;
 };
 
 EasyBacklogControllerImpl.prototype = Object.create(IEasyBacklogController);
@@ -9,9 +10,13 @@ EasyBacklogControllerImpl.prototype.loginCheck = function(callBackFail, callBack
 };
 
 EasyBacklogControllerImpl.prototype.getBacklogs = function(callBackFail, callBackSuccess) {
-	this.easyBacklogImpl.call("/accounts/"+conf_account+"/backlogs.json", callBackSuccess, callBackFail);
+	this.easyBacklogImpl.call("/accounts/"+this.config.get("easybacklog", "accountId")+"/backlogs.json", callBackSuccess, callBackFail);
 };
 
 EasyBacklogControllerImpl.prototype.setApiKey = function(apiKey) {
 	this.easyBacklogImpl.setApiKey(apiKey);
+};
+
+EasyBacklogControllerImpl.prototype.setAccountId = function(accountId) {
+	this.easyBacklogImpl.setAccountId(accountId);
 };

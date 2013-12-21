@@ -34,12 +34,12 @@
 			$(document).ready(function() {
 				if (document.location.search.indexOf("local")>0) {
 					window.Content = new Content(new jQueryL18nImpl());
-					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"));
 					window.Config = new ConfigInMemoryImpl();
+					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"), Config);
 				}else if(document.location.search.indexOf("android")>0) {
 					window.Content = new Content(new jQueryL18nImpl());
-					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"));
-					window.Config = new ConfigLocaleStorageImpl();				
+					window.Config = new ConfigLocaleStorageImpl();
+					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"), Config);				
 				}
 				Content.initializeL18n('de_DE');
 				Content.loadHeader("html/header.html");

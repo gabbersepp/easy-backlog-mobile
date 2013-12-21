@@ -49,7 +49,9 @@ describe("Easybacklog", function() {
 		});
 		
 		it("Backlogs should be loaded", function() {
-			this.e = new EasyBacklogControllerImpl(this.eb);
+			map = {};
+			map["easybacklogaccountId"] = 123;
+			this.e = new EasyBacklogControllerImpl(this.eb, new ConfigMock(map));
 			var ready = false, success = false, cSuccess = function(data) {success = true; ready = true;}, cFail = function(data) {success = false; ready = true;};
 			runs(function() {
 				this.e.getBacklogs(cFail, cSuccess);
