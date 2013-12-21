@@ -2,12 +2,14 @@ var EasyBacklogImpl = function(url, apiKey) {
 	this.url = url;
 	this.apiKey = apiKey;
 };
+
 EasyBacklogImpl.prototype = Object.create(IEasyBacklog);
-EasyBacklogImpl.prototype.loginCheck = function(callBackSuccess, callBackFail) {
+
+EasyBacklogImpl.prototype.call = function(destination, callBackSuccess, callBackFail) {
 	var callSuccess = callBackSuccess;
 	var callFail = callBackFail;
 	$.ajax({
-		url: this.buildUrl('/accounts.json'),
+		url: this.buildUrl(destination),
 		cache: false,
 		async: true,
 		type: 'GET',
@@ -21,4 +23,4 @@ EasyBacklogImpl.prototype.loginCheck = function(callBackSuccess, callBackFail) {
 
 EasyBacklogImpl.prototype.buildUrl = function(destination) {
 	return this.url+destination+"?api_key="+this.apiKey;
-}
+};
