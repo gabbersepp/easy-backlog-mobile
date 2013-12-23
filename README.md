@@ -1,6 +1,24 @@
-<a name="README">[Unofficial EasyBacklog Mobile App](http://gabbersepp.github.io/unofficial-easy-backlog-mobile/)</a> [![Build Status](https://travis-ci.org/gabbersepp/unofficial-easy-backlog-mobile.png)](https://travis-ci.org/gabbersepp/unofficial-easy-backlog-mobile)
+### Welcome to the Unofficial EasyBacklog Mobile App
 
-=======
-**An unofficial easybacklog mobile app**
+With this project I want to learn how to create apps using [PhoneGap](http://phonegap.com/).
 
-Documentation & guides live here: [http://gabbersepp.github.io/unofficial-easy-backlog-mobile/](http://gabbersepp.github.io/unofficial-easy-backlog-mobile/)
+### Build:
+[![Build Status](https://travis-ci.org/gabbersepp/unofficial-easy-backlog-mobile.png)](https://travis-ci.org/gabbersepp/unofficial-easy-backlog-mobile)
+
+### Libraries
+The project uses CSS Styles from [Zurb Foundation](http://foundation.zurb.com).
+As test framework i decided to go with [Jasmine](http://pivotal.github.io/jasmine/).
+With [Jasmine-jQuery](https://github.com/velesin/jasmine-jquery) we can extend the functionallity of Jasmine with fixtures loading and much more.
+
+### How to start with the App?
+You can download the App by using the [Adobe Build Service](https://build.phonegap.com/apps/699181/builds) (currently no IOS App is available, also i have only tested the Android App).
+Or setup PhoneGap on your local environment and build the App on your own.
+
+### How to start with the tests?
+Checkout the repo and create a file named 'user.conf.js' in _projectroot/www_ with following content:
+```javascript
+var conf_apiKey = "<your easybacklog api key>";
+var conf_accountId = <your easybacklog account id>;
+```
+Then simply call _projectroot/www/spec.html_
+
