@@ -15,10 +15,15 @@ You can download the App by using the [Adobe Build Service](https://build.phoneg
 Or setup PhoneGap on your local environment and build the App on your own.
 
 ### How to start with the tests?
-Checkout the repo and create a file named 'user.conf.js' in _projectroot/www_ with following content:
+Checkout the repo and call _projectroot/www/spec.html_ 
+
+If you like to execute the test for the real easybacklog api also, then create a file named 'user.conf.js' in _projectroot/www_ with following content:
 ```javascript
 var conf_apiKey = "<your easybacklog api key>";
 var conf_accountId = <your easybacklog account id>;
 ```
-Then simply call _projectroot/www/spec.html_
+Then call _projectroot/www/spec.html_
+
+_Notice:_
+The _spec_console.html_ is needed for travis-ci.org
 
