@@ -19,4 +19,44 @@ describe("Common content Tests", function() {
 		this.content.loadMessages("#msg");
 		expect($("#no_msg")).not.toHaveText("blub");
 	});
+	
+	it("content should be loaded into #header", function() {
+		spyOn(this.content, "loadMessages").andReturn();
+		this.content = new Content(new jQueryL18nImpl());
+		setFixtures('<div id="header"></div><div id="header2"></div>');
+		runs(function() {
+			this.content.loadHeader("spec/testData/ContentTest/content.html");
+		});
+		waits(200);
+		runs(function() {
+			expect($("#header")).toContainText("success");
+			expect($("#header2")).not.toContainText("success");
+		});
+	});
+	
+	it("content should be loaded into #footer", function() {
+		spyOn(this.content, "loadMessages").andReturn();
+		setFixtures('<div id="footer"></div><div id="footer2"></div>');
+		runs(function() {
+			this.content.loadFooter("spec/testData/ContentTest/content.html");
+		});
+		waits(200);
+		runs(function() {
+			expect($("#footer")).toContainText("success");
+			expect($("#footer2")).not.toContainText("success");
+		});
+	});
+	
+	it("content should be loaded into #content", function() {
+		spyOn(this.content, "loadMessages").andReturn();
+		setFixtures('<div id="content"></div><div id="content2"></div>');
+		runs(function() {
+			this.content.loadContent("spec/testData/ContentTest/content.html");
+		});
+		waits(300);
+		runs(function() {
+			expect($("#content")).toContainText("success");
+			expect($("#content2")).not.toContainText("success");
+		});
+	});
 });
