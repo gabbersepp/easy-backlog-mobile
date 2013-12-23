@@ -48,20 +48,4 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
-	<easybacklog 
-		api_key = "8dq1ar396q56faoati7y"
-		user_id = "5319"
-		url = "https://easybacklog.com/api"
-		account = "/accounts"
-	/>
-	<phonegapImplementation
-		Config = "ConfigLocaleStorageImpl"
-		EasyBacklog = "EasyBacklogImpl"
-		EasyBacklogController = "EasyBacklogControllerImpl"
-	/>
-	<testingImplementation
-		Config = "ConfigInMemoryImpl"
-		EasyBacklog = "EasyBacklogImpl"
-		EasyBacklogController = "EasyBacklogControllerImpl"
-	/>	
 </widget>
