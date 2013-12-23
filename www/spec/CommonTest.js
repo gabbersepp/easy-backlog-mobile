@@ -5,6 +5,7 @@ describe("Common content Tests", function() {
 		Map['msg_key1'] = "blub";
 		Map['msg_key2'] = "blub2";
 		var mockL18n = new jQueryL18nMock(Map);
+		$.fn.foundation = function(){};
 		this.content = new Content(mockL18n);
 	});
 	
