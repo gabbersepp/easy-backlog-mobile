@@ -18,6 +18,9 @@ CustomDataAttributesImpl.prototype.setOnClickEvent = function(withinDivId) {
 		
 		if (typeof location !== "undefined" && typeof section !== "undefined") {
 			$e.click(function() {
+				$e = $(this);
+				loc = $e.attr("data-cda-location");
+				section = $e.attr("data-cda-location-section");
 				content.loadIntoSection(loc, section);
 			});
 		}
