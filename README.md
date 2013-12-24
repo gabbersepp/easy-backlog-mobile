@@ -24,6 +24,8 @@ var conf_accountId = <your easybacklog account id>;
 ```
 Then call _projectroot/www/spec.html_
 
+You also can download [PhantomJS](http://phantomjs.org/download.html), add the folder to your %PATH% and call the Script "pjs.bat" within the project root
+
 _Notice:_
-The _spec_console.html_ is needed for travis-ci.org
+The _specconsole.html_ is needed for travis-ci.org
 
