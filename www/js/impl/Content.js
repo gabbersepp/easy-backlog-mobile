@@ -19,23 +19,21 @@ Content.prototype.loadMessages = function(withinDivId) {
 };
 	
 Content.prototype.loadContent = function(path) {
-	var instance = this;
-	$('#content').load(path, '', function() {
-		instance.loadMessages('#content');
-		$(document).foundation();
-	});
+	this.loadIntoSection(path, "#content");
 };
 	
 Content.prototype.loadHeader = function(path) {
-	var instance = this;
-	$('#header').load(path, '', function() {
-		instance.loadMessages('#header');
-	});
+	this.loadIntoSection(path, "#header");
 };
 	
 Content.prototype.loadFooter = function(path) {
+	this.loadIntoSection(path, "#footer");
+};
+
+Content.prototype.loadIntoSection = function(path, withinDivId) {
 	var instance = this;
-	$('#footer').load(path, '', function() {
-		instance.loadMessages('#footer');
+	$(withinDivId).load(path, '', function() {
+		instance.loadMessages(withinDivId);
+		$(document).foundation();
 	});
 };
