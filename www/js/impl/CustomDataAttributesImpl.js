@@ -5,8 +5,9 @@ CustomDataAttributesImpl.prototype = Object.create(ICustomDataAttributes);
 
 /*
 Search for elements within wihtinDivId that have data-loadOnClik set to "yes" and install onClick Handler that will load the location specified in the data-location attribute into the specified data-location-section
+this.content could be null because both Content and This must be instanciated with the instance of each other. So pass contentInstance until we know how to solve this cycle reference
 */
-CustomDataAttributesImpl.prototype.setOnClickEvent = function(withinDivId) {
+CustomDataAttributesImpl.prototype.setOnClickEvent = function(withinDivId, contentInstance) {
 	$dataElements = $(withinDivId).find("[data-cda-loadOnClick='yes']");
 	c = this.content;
 	
@@ -21,7 +22,11 @@ CustomDataAttributesImpl.prototype.setOnClickEvent = function(withinDivId) {
 				$e = $(this);
 				loc = $e.attr("data-cda-location");
 				section = $e.attr("data-cda-location-section");
-				content.loadIntoSection(loc, section);
+				if (typeof contentInstance !== "undefined") {
+					contentInstance.loadIntoSection(loc, section);
+				}else{
+					content.loadIntoSection(loc, section);
+				}
 			});
 		}
 	});

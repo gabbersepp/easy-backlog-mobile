@@ -7,6 +7,7 @@ describe("CustomDataAttributesImpl:", function() {
 					  
 			setFixtures(str);
 			content = jasmine.createSpyObj('Content', ['loadIntoSection']);
+			
 			cda = new CustomDataAttributesImpl(content);
 			cda.setOnClickEvent("#withinDiv");
 			

@@ -1,5 +1,6 @@
-var Content = function(jQueryL18n){
+var Content = function(jQueryL18n, cda){
 	this.jQueryL18n = jQueryL18n;
+	this.cda = cda;
 };
 
 Content.prototype = Object.create(IContent);
@@ -35,5 +36,8 @@ Content.prototype.loadIntoSection = function(path, withinDivId) {
 	$(withinDivId).load(path, '', function() {
 		instance.loadMessages(withinDivId);
 		$(document).foundation();
+		if (typeof instance.cda !== "undefined") {
+			instance.cda.setOnClickEvent(withinDivId, this);
+		}
 	});
 };
