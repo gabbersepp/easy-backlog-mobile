@@ -18,6 +18,7 @@
 		<script type="text/javascript" src="js/interface/IEasyBacklog.js"></script>
 		<script type="text/javascript" src="js/interface/IEasyBacklogController.js"></script>
 		<script type="text/javascript" src="js/interface/IConfig.js"></script>
+		<script type="text/javascript" src="js/interface/ICustomDataAttributes.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/impl/Content.js"></script>
 		<script type="text/javascript" src="js/impl/jQueryL18nImpl.js"></script>
@@ -25,6 +26,7 @@
 		<script type="text/javascript" src="js/impl/EasyBacklogControllerImpl.js"></script>
 		<script type="text/javascript" src="js/impl/ConfigInMemoryImpl.js"></script>
 		<script type="text/javascript" src="js/impl/ConfigLocaleStorageImpl.js"></script>
+		<script type="text/javascript" src="js/impl/CustomDataAttributesImpl.js"></script>
         <title></title>
     </head>
     <body>
@@ -33,11 +35,13 @@
             app.initialize();
 			$(document).ready(function() {
 				if (document.location.search.indexOf("local")>0) {
-					window.Content = new Content(new jQueryL18nImpl());
+					window.CustomDataAttributes = new CustomDataAttributesImpl();
+					window.Content = new Content(new jQueryL18nImpl(), window.CustomDataAttributes);
 					window.Config = new ConfigInMemoryImpl();
 					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"), Config);
 				}else if(document.location.search.indexOf("android")>0) {
-					window.Content = new Content(new jQueryL18nImpl());
+					window.CustomDataAttributes = new CustomDataAttributesImpl();
+					window.Content = new Content(new jQueryL18nImpl(), window.CustomDataAttributes);
 					window.Config = new ConfigLocaleStorageImpl();
 					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"), Config);				
 				}
