@@ -37,7 +37,7 @@ Content.prototype.loadIntoSection = function(path, withinDivId) {
 		instance.loadMessages(withinDivId);
 		$(document).foundation();
 		if (typeof instance.cda !== "undefined") {
-			instance.cda.setOnClickEvent(withinDivId, this);
+			instance.cda.setOnClickEvent(withinDivId, instance);
 		}
 	});
 };
