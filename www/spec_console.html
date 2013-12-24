@@ -19,7 +19,6 @@
 		<script type="text/javascript" src="js/impl/Content.js"></script>
 		<script type="text/javascript" src="js/impl/EasyBacklogImpl.js"></script>
 		<script type="text/javascript" src="js/impl/EasyBacklogControllerImpl.js"></script>
-		<script type="text/javascript" src="js/impl/ConfigXmlImpl.js"></script>
 		<script type="text/javascript" src="js/impl/ConfigInMemoryImpl.js"></script>
 		<script type="text/javascript" src="js/mock/jQueryL18nMock.js"></script>
 		<script type="text/javascript" src="js/mock/ConfigMock.js"></script>
@@ -35,10 +34,28 @@
 <body>
 
 <script type="text/javascript">
-  var console_reporter = new jasmine.ConsoleReporter()
+  var console_reporter = new jasmine.ConsoleReporter();
+              (function() {
+                var jasmineEnv = jasmine.getEnv();
+                jasmineEnv.updateInterval = 1000;
+
+
   jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
   jasmine.getEnv().addReporter(console_reporter);
-  jasmine.getEnv().execute();
+
+                var currentWindowOnload = window.onload;
+
+                window.onload = function() {
+                    if (currentWindowOnload) {
+                        currentWindowOnload();
+                    }
+                    execJasmine();
+                };
+
+                function execJasmine() {
+                    jasmineEnv.execute();
+                }
+            })();
 </script>
 
 </body>
