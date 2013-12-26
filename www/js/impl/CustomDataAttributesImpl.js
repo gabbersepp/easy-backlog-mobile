@@ -22,6 +22,14 @@ CustomDataAttributesImpl.prototype.setOnClickEvent = function(withinDivId, conte
 				$e = $(this);
 				loc = $e.attr("data-cda-location");
 				section = $e.attr("data-cda-location-section");
+				paramName = $e.attr("data-cda-location-param-name");
+				paramValue = $e.attr("data-cda-location-param-value");
+				
+				if (typeof paramName !== "undefined" && typeof paramValue !== "undefined") {
+					alert("asd");
+					window.Session.set("cda", paramName, paramValue);
+				}
+				
 				if (typeof contentInstance !== "undefined") {
 					contentInstance.loadIntoSection(loc, section);
 				}else{
