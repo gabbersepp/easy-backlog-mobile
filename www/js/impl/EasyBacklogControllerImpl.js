@@ -20,3 +20,7 @@ EasyBacklogControllerImpl.prototype.setApiKey = function(apiKey) {
 EasyBacklogControllerImpl.prototype.setAccountId = function(accountId) {
 	this.easyBacklogImpl.setAccountId(accountId);
 };
+
+EasyBacklogControllerImpl.prototype.getThemes = function(backlogId, callBackFail, callBackSuccess) {
+	this.easyBacklogImpl.call("/backlogs/"+backlogId+"/themes.json", callBackSuccess, callBackFail);
+};
