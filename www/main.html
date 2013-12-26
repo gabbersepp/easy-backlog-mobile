@@ -6,14 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, targetdensity-dpi=120dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 
-		<link rel="stylesheet" href="css/normalize.css"/>
-		<link rel="stylesheet" href="css/foundation.css"/>
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.0.css"/>
 		<script type="text/javascript" src="js/user.conf.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery.i18n.properties-1.0.9.js"></script>
-		<script type="text/javascript" src="js/foundation/modernizr.js"></script>
-
-		<script type="text/javascript" src="js/interface/ICommon.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery.mobile-1.4.0.js"></script>
+		
+		<script type="text/javascript" src="js/interface/IContent.js"></script>
 		<script type="text/javascript" src="js/interface/IjQueryL18n.js"></script>
 		<script type="text/javascript" src="js/interface/IEasyBacklog.js"></script>
 		<script type="text/javascript" src="js/interface/IEasyBacklogController.js"></script>
@@ -55,16 +54,21 @@
 				Content.loadFooter("html/footer.html");
 			});
         </script>
-        
-		<div id="header">
+        <div data-role="page">
+			<div data-role="popup" id="popup" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+			</div>
+			<div data-role="header">
+				<div id="header">
+				</div>
+			</div>
+			<div data-role="content">
+				<div id="content">
+				</div>
+			</div>
+			<div data-role="footer">
+				<div id="footer">
+				</div>
+			</div>
 		</div>
-
-		<div id="content">
-		
-		</div>
-		
-		<div id="footer">
-		</div>
-		<script type="text/javascript" src="js/foundation/foundation.min.js"></script>
     </body>
 </html>

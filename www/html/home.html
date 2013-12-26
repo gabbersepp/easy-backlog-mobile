@@ -1,10 +1,24 @@
 <script>
+backlogsFail = function() {
+	$("#popup").html('<div data-role="header" data-theme="a">Leider falsch<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">OK</a></div>');
+	$("#popup").popup('open');
+}
+
+backlogsSuccess = function(data) {
+	for(backlog in data) {
+		$("#backlogsView").append('<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-cda-loadOnClick="yes" data-cda-location="html/backlogDetail.html" data-cda-location-section="#content" >'+data[backlog].name+'</a></li>');
+	};
+	$("#content").trigger("create");
+	CustomDataAttributes.setOnClickEvent("#content", window.Content);
+}
 $(document).ready(function() {
 	if(typeof Config.get("easybacklog", "apiKey") === "undefined") {
-		alert("nicht gesetzte");
-		Config.set("easybacklog", "apiKey", "qwe");
+		Content.loadContent("html/login.html");
+	}else{
+		EasyBacklog.getBacklogs(backlogsFail, backlogsSuccess);
 	}
-	alert(Config.get("easybacklog", "apiKey"));
 });
 </script>
-<h1><div id="msg_c_homeHeader"></div></h1>
+<h1><div id="msg_c_homeHeader"></div></h1><br>
+<ul data-role="listview" id="backlogsView" data-filter="true">
+</ul>

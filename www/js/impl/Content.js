@@ -33,11 +33,12 @@ Content.prototype.loadFooter = function(path) {
 
 Content.prototype.loadIntoSection = function(path, withinDivId) {
 	var instance = this;
-	$(withinDivId).load(path, '', function() {
+	$(withinDivId).load(path, '', function(data) {
 		instance.loadMessages(withinDivId);
-		$(document).foundation();
 		if (typeof instance.cda !== "undefined") {
 			instance.cda.setOnClickEvent(withinDivId, instance);
 		}
+		// used to apply jquerymobile
+		$(withinDivId).trigger("create");
 	});
 };

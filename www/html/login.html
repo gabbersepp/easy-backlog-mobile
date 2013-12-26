@@ -1,4 +1,3 @@
-<h1><div id="msg_c_homeHeader"></div></h1>
 <input type="text" name="apiKey" placeholder="" id="login_apiKey"><br>
 <input type="checkbox" name="saveApiKey" id="login_saveApiKey"><br>
 <input type="text" name="accountId" id="login_accountId" placeholder=""><br>
@@ -6,10 +5,10 @@
 <script>
 $(document).ready(function() {
 	if(typeof conf_apiKey !== "undefined") {
-		$("#login_apiKey").attr("placeholder", conf_apiKey);
+		$("#login_apiKey").attr("value", conf_apiKey);
 	}
 	if(typeof conf_accountId !== "undefined") {
-		$("#login_accountId").attr("placeholder", conf_accountId);
+		$("#login_accountId").attr("value", conf_accountId);
 	}	
 });
 login = function() {
