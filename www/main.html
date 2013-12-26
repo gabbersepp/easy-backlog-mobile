@@ -38,11 +38,15 @@
 					window.Content = new Content(new jQueryL18nImpl(), window.CustomDataAttributes);
 					window.Config = new ConfigInMemoryImpl();
 					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"), Config);
+					// use InMemory COnfig as sSession manager
+					window.Session = new ConfigInMemoryImpl();
 				}else if(document.location.search.indexOf("android")>0) {
 					window.CustomDataAttributes = new CustomDataAttributesImpl();
 					window.Content = new Content(new jQueryL18nImpl(), window.CustomDataAttributes);
 					window.Config = new ConfigLocaleStorageImpl();
-					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"), Config);				
+					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"), Config);	
+					// use inMemory config as session manager
+					window.Session = new ConfigInMemoryImpl();
 				}
 				Content.initializeL18n('de_DE');
 				Content.loadHeader("html/header.html");
