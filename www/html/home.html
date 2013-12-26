@@ -12,7 +12,7 @@ backlogsSuccess = function(data) {
 	CustomDataAttributes.setOnClickEvent("#content", window.Content);
 }
 $(document).ready(function() {
-	if(typeof Config.get("easybacklog", "apiKey") === "undefined") {
+	if(typeof Config.get("easybacklog", "apiKey") === "undefined" || Config.get("easybacklog", "apiKey") == null || Config.get("easybacklog", "apiKey").length == 0) {
 		Content.loadContent("html/login.html");
 	}else{
 		EasyBacklog.getBacklogs(backlogsFail, backlogsSuccess);

@@ -26,7 +26,6 @@ CustomDataAttributesImpl.prototype.setOnClickEvent = function(withinDivId, conte
 				paramValue = $e.attr("data-cda-location-param-value");
 				
 				if (typeof paramName !== "undefined" && typeof paramValue !== "undefined") {
-					alert("asd");
 					window.Session.set("cda", paramName, paramValue);
 				}
 				
