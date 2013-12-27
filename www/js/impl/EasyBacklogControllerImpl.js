@@ -24,3 +24,11 @@ EasyBacklogControllerImpl.prototype.setAccountId = function(accountId) {
 EasyBacklogControllerImpl.prototype.getThemes = function(backlogId, callBackFail, callBackSuccess) {
 	this.easyBacklogImpl.call("/backlogs/"+backlogId+"/themes.json", callBackSuccess, callBackFail);
 };
+
+EasyBacklogControllerImpl.prototype.getStories = function(themeId, callBackFail, callBackSuccess) {
+	this.easyBacklogImpl.call("/themes/"+themeId+"/stories.json", callBackSuccess, callBackFail);
+};
+
+EasyBacklogControllerImpl.prototype.getStory = function(storyId, callBackFail, callBackSuccess) {
+	this.easyBacklogImpl.call("/stories/"+storyId+".json", callBackSuccess, callBackFail);
+};

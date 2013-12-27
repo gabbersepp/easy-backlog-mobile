@@ -1,0 +1,20 @@
+<script type="text/javascript">
+storyId = window.Session.get("cda", "storyId");
+
+fail = function(data) {
+}
+
+success = function(data) {
+	for(story in data) {
+		$("#storiesView").append('<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-cda-location-param-name="storyId" data-cda-location-param-value="'+data[story].id+'" data-cda-loadOnClick="yes" data-cda-location="html/storyDetail.html" data-cda-location-section="#content" >'+data[story].name+'</a></li>');
+	};
+	$("#content").trigger("create");
+	CustomDataAttributes.setOnClickEvent("#content", window.Content);
+}
+
+$(document).ready(function() {
+	EasyBacklog.getStory(storyId, fail, success);
+});
+</script>
+<ul data-role="listview" id="storiesView" data-filter="true">
+</ul>

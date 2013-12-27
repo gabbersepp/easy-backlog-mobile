@@ -1,0 +1,20 @@
+<script type="text/javascript">
+themeId = window.Session.get("cda", "themeId");
+
+fail = function(data) {
+}
+
+success = function(data) {
+	for(story in data) {
+		$("#themesView").append('<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-cda-location-param-name="storyId" data-cda-location-param-value="'+data[story].id+'" data-cda-loadOnClick="yes" data-cda-location="html/storyDetail.html" data-cda-location-section="#content" >As a '+data[story].as_a+' i want to '+data[story].i_want_to+' so i can '+data[story].so_i_can+'</a></li>');
+	};
+	$("#content").trigger("create");
+	CustomDataAttributes.setOnClickEvent("#content", window.Content);
+}
+
+$(document).ready(function() {
+	EasyBacklog.getStories(themeId, fail, success);
+});
+</script>
+<ul data-role="listview" id="themesView" data-filter="true">
+</ul>
