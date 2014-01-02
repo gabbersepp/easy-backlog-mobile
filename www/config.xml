@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="de.biehler-josef.easyBacklogMobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>EasyBacklogMobile</name>
+<widget id="de.biehler-josef.unofficialEasyBacklogMobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Not official EasyBacklog Mobile App</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        This app tries to give you access to some of the features of http://easybacklog.com .
+		It was built to play around with phonegap and some other useful libs
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="support@biehler-josef.de" href="http://biehler-josef.de">
+        Josef Biehler
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
