@@ -22,6 +22,10 @@ If you like to execute the test for the real easybacklog api also, then create a
 var conf_apiKey = "<your easybacklog api key>";
 var conf_accountId = <your easybacklog account id>;
 ```
+
+In some browsers you have to ensure that Cross-Origin-Requests are allowed.
+If you use FireFox you can use an addon called "Force CORS" which will do that for you.
+
 Then call _projectroot/www/spec.html_
 
 You also can download [PhantomJS](http://phantomjs.org/download.html), add the folder to your %PATH% and call the Script "pjs.bat" within the project root
