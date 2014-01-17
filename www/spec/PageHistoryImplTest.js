@@ -1,4 +1,26 @@
 describe("PageHistoryImpl", function() {
+    describe("History", function() {
+        beforeEach(function() {
+            this.pageHistory = new PageHistoryImpl();
+        });
+        it("push should set content", function() {
+            this.pageHistory.push("test2");
+            expect(this.pageHistory.html[0]).toEqual("test2");
+        });
+        it("pop should get content", function() {
+            this.pageHistory.index = 0;
+            this.pageHistory.html[0] = "test";
+            expect(this.pageHistory.pop()).toEqual("test");
+        });
+        it("load should load pushed content into container", function() {
+            window.CustomDataAttributes = jasmine.createSpyObj('CustomDataAttributes', ['setOnClickEvent']);
+            this.pageHistory.index = 0;
+            this.pageHistory.html[0] = "test";
+            setFixtures("<div id='testct'></div>");
+            this.pageHistory.load();
+
+        });
+    });
     describe("CirclePushLib with maxEntryLimit of 20", function() {
         describe("getNextIndex", function() {
             beforeEach(function() {
