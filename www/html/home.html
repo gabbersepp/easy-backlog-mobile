@@ -4,11 +4,12 @@ backlogsFail = function() {
 	$("#popup").popup('open');
 }
 
-backlogsSuccess = function(data) {
+
+backlogsSuccess = function (data) {
 	for(backlog in data) {
 		$("#backlogsView").append('<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-cda-location-param-name="backlogId" data-cda-location-param-value="'+data[backlog].id+'" data-cda-loadOnClick="yes" data-cda-location="html/backlogDetail.html" data-cda-location-section="#content" >'+data[backlog].name+'</a></li>');
 	};
-	CustomDataAttributes.setOnClickEvent("#content", window.Content);
+    CustomDataAttributes.setOnClickEvent("#content", window.Content);
 }
 
 $(document).off("contentLoadReady");
