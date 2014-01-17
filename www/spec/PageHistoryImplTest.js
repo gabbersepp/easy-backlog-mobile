@@ -1,7 +1,7 @@
 describe("PageHistoryImpl", function() {
     describe("History", function() {
         beforeEach(function() {
-            this.pageHistory = new PageHistoryImpl();
+            this.pageHistory = new PageHistoryImpl(jasmine.createSpyObj('CustomDataAttributes', ['setOnClickEvent']));
         });
         it("push should set content", function() {
             this.pageHistory.push("test2");
@@ -13,7 +13,6 @@ describe("PageHistoryImpl", function() {
             expect(this.pageHistory.pop()).toEqual("test");
         });
         it("load should load pushed content into container", function() {
-            window.CustomDataAttributes = jasmine.createSpyObj('CustomDataAttributes', ['setOnClickEvent']);
             this.pageHistory.index = 0;
             this.pageHistory.html[0] = "test";
             setFixtures("<div id='testct'></div>");

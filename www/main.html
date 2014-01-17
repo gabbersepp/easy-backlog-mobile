@@ -42,7 +42,7 @@
 					window.EasyBacklog = new EasyBacklogCacheController(new EasyBacklogImpl("https://easybacklog.com/api"), Config, new ConfigInMemoryImpl());
 					// use InMemory COnfig as sSession manager
 					window.Session = new ConfigInMemoryImpl();
-					window.PageHistory = new PageHistoryImpl();
+					window.PageHistory = new PageHistoryImpl(window.CustomDataAttributes);
 				}else if(document.location.search.indexOf("android")>0) {
 					window.CustomDataAttributes = new CustomDataAttributesImpl();
 					window.Content = new Content(new jQueryL18nImpl(), window.CustomDataAttributes);
@@ -50,7 +50,7 @@
 					window.EasyBacklog = new EasyBacklogCacheController(new EasyBacklogImpl("https://easybacklog.com/api"), Config, new ConfigInMemoryImpl());
 					// use inMemory config as session manager
 					window.Session = new ConfigInMemoryImpl();
-					window.PageHistory = new PageHistoryImpl();
+					window.PageHistory = new PageHistoryImpl(window.CustomDataAttributes);
 				}
 				Content.initializeL18n('de_DE');
 				Content.loadHeader("html/header.html");

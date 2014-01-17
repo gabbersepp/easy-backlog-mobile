@@ -1,7 +1,8 @@
-PageHistoryImpl = function() {
+PageHistoryImpl = function(cda) {
 	this.html = {};
 	this.index = -1;
     this.maxMemoryEntries = 20;
+    this.cda = cda;
 };
 
 PageHistoryImpl.prototype = Object.create(IPageHistory);
@@ -19,7 +20,7 @@ PageHistoryImpl.prototype.load = function() {
 	// after old html has been loaded, the page contentLoadReady event is installed
 	// remove it because otherwise the event handler can be called falsely
 	$(document).off("contentLoadReady");
-	CustomDataAttributes.setOnClickEvent("#content", Content);
+	this.cda.setOnClickEvent("#content", Content);
 }
 
 /**
