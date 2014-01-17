@@ -27,7 +27,8 @@
 		<script type="text/javascript" src="js/impl/ConfigInMemoryImpl.js"></script>
 		<script type="text/javascript" src="js/impl/ConfigLocaleStorageImpl.js"></script>
 		<script type="text/javascript" src="js/impl/CustomDataAttributesImpl.js"></script>
-		<script type="text/javascript" src="js/impl/PageHistoryImpl.js"></script>
+        <script type="text/javascript" src="js/impl/PageHistoryImpl.js"></script>
+        <script type="text/javascript" src="js/impl/EasyBacklogCacheController.js"></script>
     </head>
     <body>
 	    <script type="text/javascript" src="phonegap.js"></script>
@@ -38,7 +39,7 @@
 					window.CustomDataAttributes = new CustomDataAttributesImpl();
 					window.Content = new Content(new jQueryL18nImpl(), window.CustomDataAttributes);
 					window.Config = new ConfigInMemoryImpl();
-					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"), Config);
+					window.EasyBacklog = new EasyBacklogCacheController(new EasyBacklogImpl("https://easybacklog.com/api"), Config, new ConfigInMemoryImpl());
 					// use InMemory COnfig as sSession manager
 					window.Session = new ConfigInMemoryImpl();
 					window.PageHistory = new PageHistoryImpl();
@@ -46,7 +47,7 @@
 					window.CustomDataAttributes = new CustomDataAttributesImpl();
 					window.Content = new Content(new jQueryL18nImpl(), window.CustomDataAttributes);
 					window.Config = new ConfigLocaleStorageImpl();
-					window.EasyBacklog = new EasyBacklogControllerImpl(new EasyBacklogImpl("https://easybacklog.com/api"), Config);	
+					window.EasyBacklog = new EasyBacklogCacheController(new EasyBacklogImpl("https://easybacklog.com/api"), Config, new ConfigInMemoryImpl());
 					// use inMemory config as session manager
 					window.Session = new ConfigInMemoryImpl();
 					window.PageHistory = new PageHistoryImpl();
