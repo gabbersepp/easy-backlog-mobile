@@ -8,10 +8,11 @@ backlogsSuccess = function(data) {
 	for(backlog in data) {
 		$("#backlogsView").append('<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-cda-location-param-name="backlogId" data-cda-location-param-value="'+data[backlog].id+'" data-cda-loadOnClick="yes" data-cda-location="html/backlogDetail.html" data-cda-location-section="#content" >'+data[backlog].name+'</a></li>');
 	};
-	$("#content").trigger("create");
 	CustomDataAttributes.setOnClickEvent("#content", window.Content);
 }
-$(document).ready(function() {
+
+$(document).off("contentLoadReady");
+$(document).on("contentLoadReady", function(e) {
 	if(typeof Config.get("easybacklog", "apiKey") === "undefined" || Config.get("easybacklog", "apiKey") == null || Config.get("easybacklog", "apiKey").length == 0) {
 		Content.loadContent("html/login.html");
 	}else{
@@ -22,5 +23,4 @@ $(document).ready(function() {
 });
 </script>
 <h1><div id="msg_c_homeHeader"></div></h1><br>
-<ul data-role="listview" id="backlogsView" data-filter="true">
-</ul>
+<ul data-role="listview" id="backlogsView" data-filter="true"></ul>

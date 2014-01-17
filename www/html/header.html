@@ -1,3 +1,12 @@
-<a data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-left" data-cda-location="html/home.html" data-cda-loadOnClick="yes" data-cda-location-section="#content"></a>
+<script>
+goBack = function() {
+PageHistory.load();
+}
+document.addEventListener("backbutton", goBack, false);
+</script>
+<div class="ui-grid-a ui-btn-left">
+        <div class="ui-block-a" ><a href="#" data-role="button" data-icon="home" data-iconpos="notext" data-cda-location="html/home.html" data-cda-loadOnClick="yes" data-cda-location-section="#content"></a></div>
+        <div class="ui-block-b" ><a href="#" data-role="button" data-icon="back" data-iconpos="notext" data-cda-executeOnClick="yes" data-cda-function="goBack"></a></div>
+</div>
 <a data-role="button" data-icon="gear" data-iconpos="notext" class="ui-btn-right" data-cda-location="html/config.html" data-cda-loadOnClick="yes" data-cda-location-section="#content"></a>
 <span class="ui-title"/>

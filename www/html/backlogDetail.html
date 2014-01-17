@@ -8,11 +8,11 @@ success = function(data) {
 	for(theme in data) {
 		$("#themesView").append('<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-cda-location-param-name="themeId" data-cda-location-param-value="'+data[theme].id+'" data-cda-loadOnClick="yes" data-cda-location="html/themeDetail.html" data-cda-location-section="#content" >'+data[theme].name+'</a></li>');
 	};
-	$("#content").trigger("create");
 	CustomDataAttributes.setOnClickEvent("#content", window.Content);
 }
 
-$(document).ready(function() {
+$(document).off("contentLoadReady");
+$(document).on("contentLoadReady", function(e) {
 	EasyBacklog.getThemes(backlogId, fail, success);
 });
 </script>

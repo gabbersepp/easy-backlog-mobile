@@ -37,4 +37,26 @@ CustomDataAttributesImpl.prototype.setOnClickEvent = function(withinDivId, conte
 			});
 		}
 	});
+	
+	$dataElements = $(withinDivId).find("[data-cda-executeOnClick='yes']");
+	c = this.content;
+	
+	$dataElements.each(function() {
+		$e = $(this);
+		fn = $e.attr("data-cda-function");
+		content = c;
+		
+		if (typeof fn !== "undefined") {
+			$e.click(function() {
+				$e = $(this);
+				//fn = $e.attr("data-cda-function");
+				
+				var fn = window[$e.attr("data-cda-function")];
+				if(typeof fn === 'function') {
+					fn();
+				}
+
+			});
+		}
+	});
 };

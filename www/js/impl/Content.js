@@ -32,8 +32,14 @@ Content.prototype.loadFooter = function(path) {
 };
 
 Content.prototype.loadIntoSection = function(path, withinDivId) {
+	if (withinDivId === "#content") {
+		// push current content onto history stack
+		PageHistory.push($("#content").html());
+	}
 	var instance = this;
+
 	$(withinDivId).load(path, '', function(data) {
+		$.event.trigger("contentLoadReady");
 		instance.loadMessages(withinDivId);
 		if (typeof instance.cda !== "undefined") {
 			instance.cda.setOnClickEvent(withinDivId, instance);

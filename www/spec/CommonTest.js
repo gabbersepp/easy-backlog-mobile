@@ -8,6 +8,7 @@ describe("ContentTest.suite1", function() {
 			var mockL18n = new jQueryL18nMock(Map);
 			$.fn.foundation = function(){};
 			this.content = new Content(mockL18n);
+			window.PageHistory = new PageHistoryImpl();
 		});
 		
 		it("loadMessages() should load all messages within the specified div", function() {
