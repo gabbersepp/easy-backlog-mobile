@@ -2,7 +2,8 @@
 <div id="msg_c_login_accountId"></div><input type="text" name="accountId" id="login_accountId" placeholder=""><br>
 <a  data-role="button" onclick="javascript:login();"><div id="msg_c_login_login"></div></a>
 <script>
-$(document).ready(function() {
+$(document).off("contentLoadReady");
+$(document).on("contentLoadReady", function() {
 	if(typeof conf_apiKey !== "undefined") {
 		$("#login_apiKey").attr("value", conf_apiKey);
 	}
