@@ -1,7 +1,6 @@
-<input type="text" name="apiKey" placeholder="" id="login_apiKey"><br>
-<input type="checkbox" name="saveApiKey" id="login_saveApiKey"><br>
-<input type="text" name="accountId" id="login_accountId" placeholder=""><br>
-<button onclick="javascript:login();">Login</button>
+<div id="msg_c_login_apiKey"></div><input type="text" name="apiKey" placeholder="" id="login_apiKey"><br>
+<div id="msg_c_login_accountId"></div><input type="text" name="accountId" id="login_accountId" placeholder=""><br>
+<a  data-role="button" onclick="javascript:login();"><div id="msg_c_login_login"></div></a>
 <script>
 $(document).ready(function() {
 	if(typeof conf_apiKey !== "undefined") {
@@ -16,10 +15,8 @@ login = function() {
 		alert("falsch");
 	};
 	success = function(data) {
-		if($("#login_saveApiKey").is(":checked")) {
-			Config.set("easybacklog", "apiKey", $("#login_apiKey").val());
-			Config.set("easybacklog", "accountId", $("#login_accountId").val());
-		}
+        Config.set("easybacklog", "apiKey", $("#login_apiKey").val());
+        Config.set("easybacklog", "accountId", $("#login_accountId").val());
 		Content.loadContent("html/home.html");
 	};
 	this.EasyBacklog.setApiKey($("#login_apiKey").val());
