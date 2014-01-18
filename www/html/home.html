@@ -12,8 +12,8 @@ backlogsSuccess = function (data) {
     CustomDataAttributes.setOnClickEvent("#content", window.Content);
 }
 
-$(document).off("contentLoadReady");
-$(document).on("contentLoadReady", function(e) {
+$("#content").off("contentLoadReady");
+$("#content").on("contentLoadReady", function(e) {
 	if(typeof Config.get("easybacklog", "apiKey") === "undefined" || Config.get("easybacklog", "apiKey") == null || Config.get("easybacklog", "apiKey").length == 0) {
 		Content.loadContent("html/login.html");
 	}else{

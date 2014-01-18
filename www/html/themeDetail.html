@@ -11,8 +11,8 @@ success = function(data) {
 	CustomDataAttributes.setOnClickEvent("#content", window.Content);
 }
 
-$(document).off("contentLoadReady");
-$(document).on("contentLoadReady", function(e) {
+$("#content").off("contentLoadReady");
+$("#content").on("contentLoadReady", function(e) {
 	EasyBacklog.getStories(themeId, fail, success);
 });
 </script>
