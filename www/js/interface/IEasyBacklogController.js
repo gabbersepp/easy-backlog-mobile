@@ -5,5 +5,6 @@ var IEasyBacklogController = {
 	setAccountId: function(accountId) {},
 	getThemes: function(backlogId, fail, success) {},
 	getStories: function(themeId, fail, success) {},
-	getStory: function(storyId, fail, success) {}
+	getStory: function(storyId, fail, success) {},
+    getSprints: function(backlogId, fail, success) {}
 }
