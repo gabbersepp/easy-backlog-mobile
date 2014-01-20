@@ -1,27 +1,10 @@
 <script>
-backlogsFail = function() {
-	$("#popup").html('<div data-role="header" data-theme="a">Leider falsch<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">OK</a></div>');
-	$("#popup").popup('open');
-}
-
-
-backlogsSuccess = function (data) {
-	for(backlog in data) {
-		$("#backlogsView").append('<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-cda-location-param-name="backlogId" data-cda-location-param-value="'+data[backlog].id+'" data-cda-loadOnClick="yes" data-cda-location="html/backlogDetail.html" data-cda-location-section="#content" >'+data[backlog].name+'</a></li>');
-	};
-    CustomDataAttributes.setOnClickEvent("#content", window.Content);
-}
-
 $("#content").off("contentLoadReady");
 $("#content").on("contentLoadReady", function(e) {
 	if(typeof Config.get("easybacklog", "apiKey") === "undefined" || Config.get("easybacklog", "apiKey") == null || Config.get("easybacklog", "apiKey").length == 0) {
 		Content.loadContent("html/login.html");
 	}else{
-		EasyBacklog.setApiKey(Config.get("easybacklog", "apiKey"));
-		EasyBacklog.setAccountId(Config.get("easybacklog", "accountId"));
-		EasyBacklog.getBacklogs(backlogsFail, backlogsSuccess);
+        Content.loadContent("html/start_overview.html")
 	}
 });
 </script>
-<h1><div id="msg_c_homeHeader"></div></h1><br>
-<ul data-role="listview" id="backlogsView" data-filter="true"></ul>
