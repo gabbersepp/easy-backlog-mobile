@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="css/theme_eb_1/easybacklog_1.css" />
         <link rel="stylesheet" href="css/theme_eb_1/jquery.mobile.icons.min.css" />
 
+        <script type="text/javascript" src="js/global_conf.js"></script>
         <script type="text/javascript" src="js/user.conf.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery.i18n.properties-1.0.9.js"></script>
@@ -55,7 +56,11 @@
 					window.Session = new ConfigInMemoryImpl();
 					window.PageHistory = new PageHistoryImpl(window.CustomDataAttributes);
 				}
-				Content.initializeL18n('de_DE');
+                var lang = "de_DE";
+                if (typeof Config.get("language", "lang") !== "undefined") {
+                    lang = Config.get("language", "lang");
+                }
+				Content.initializeL18n(Config.get("language", "lang"));
 				Content.loadHeader("html/header.html");
 				if (typeof Config.get("easybacklog", "apiKey") === "undefined") {
 					Content.loadContent("html/login.html");

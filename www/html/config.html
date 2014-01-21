@@ -1,1 +1,59 @@
-Please make some cnfig
+<script>
+    $("#content").off("contentLoadReady").on("contentLoadReady", function() {
+        var apiKey = Config.get("easybacklog", "apiKey");
+        var accountId = Config.get("easybacklog", "accountId");
+        $("#apiKey").val(apiKey);
+        $("#accountId").val(accountId);
+
+        // set available languages
+        var langs = GlobalConf.Locale.availableLanguages.split(",");
+        for(lang in langs) {
+            selected = "";
+            if (Config.get("language", "lang") == langs[lang])
+                selected = " selected ";
+            $("#lang_select").append("<option value='"+langs[lang]+"'"+selected+">"+langs[lang]+"</option>");
+        }
+    });
+
+    var save = function() {
+        // API Data
+        var apiKey = $("#apiKey").val();
+        var accountId = $("#accountId").val();
+        var currConfApiKey = Config.get("easybacklog", "apiKey");
+        var currConfAccountId = Config.get("easybacklog", "accountId");
+
+        if (apiKey !== currConfApiKey || accountId !== currConfAccountId) {
+            // only update those config if value changed
+            fail = function(data) {
+                alert("falsch");
+                this.EasyBacklog.setApiKey(currConfApiKey);
+                this.EasyBacklog.setAccountId(currConfAccountId);
+            };
+            success = function(data) {
+                Config.set("easybacklog", "apiKey", apiKey);
+                Config.set("easybacklog", "accountId", accountId);
+            };
+            this.EasyBacklog.setApiKey(apiKey);
+            this.EasyBacklog.setAccountId(accountId);
+            this.EasyBacklog.loginCheck(fail, success);
+        }
+
+        // update language
+        Config.set("language", "lang", $("#lang_select").val());
+    }
+</script>
+<div data-role="collapsible">
+    <h4><div id="msg_c_config_api_header"></div></h4>
+    <p>
+        <div id="msg_c_config_input_apiKey"></div><input type="text" id="apiKey"><br>
+        <div id="msg_c_config_input_accountId"></div><input type="text" id="accountId"><br>
+    </p>
+</div>
+<div data-role="collapsible">
+    <h4><div id="msg_c_config_language_header"></div></h4>
+    <p>
+        <div id="msg_c_config_input_language"></div><select id="lang_select"></select>
+    </p>
+</div>
+
+<a data-role="button" onClick="save()"><div id="msg_c_config_submit"></div></a>
