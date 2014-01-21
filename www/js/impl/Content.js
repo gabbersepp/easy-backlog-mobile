@@ -39,7 +39,7 @@ Content.prototype.loadIntoSection = function(path, withinDivId) {
 	var instance = this;
 
 	$(withinDivId).load(path, '', function(data) {
-		$(withinDivId).trigger("contentLoadReady");
+		$(withinDivId).trigger("contentLoadReady").off("contentLoadReady");
 		instance.loadMessages(withinDivId);
 		if (typeof instance.cda !== "undefined") {
 			instance.cda.setOnClickEvent(withinDivId, instance);
