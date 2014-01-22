@@ -16,6 +16,9 @@
     });
 
     var save = function() {
+        p = new PopUpjQMImpl();
+        p.addActionButton("Wirklich speichern?", function(){alert("Gespeichert!");});
+        p.showPopUp();
         // API Data
         var apiKey = $("#apiKey").val();
         var accountId = $("#accountId").val();
