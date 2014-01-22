@@ -6,7 +6,7 @@ With this project I want to learn how to create apps using [PhoneGap](http://pho
 [![Build Status](https://travis-ci.org/gabbersepp/unofficial-easy-backlog-mobile.png)](https://travis-ci.org/gabbersepp/unofficial-easy-backlog-mobile)
 
 ### Libraries
-The project uses CSS Styles from [Zurb Foundation](http://foundation.zurb.com).
+The project uses jQuery Mobile.
 As test framework i decided to go with [Jasmine](http://pivotal.github.io/jasmine/).
 With [Jasmine-jQuery](https://github.com/velesin/jasmine-jquery) we can extend the functionallity of Jasmine with fixtures loading and much more.
 
