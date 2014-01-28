@@ -49,7 +49,7 @@ sFail = function() {
 }
 sSuccess = function(data) {
     $("#last_sprints_list").html('');
-    sprintDetailSuccess(emptySprint);
+    //sprintDetailSuccess(emptySprint);
     if (data.length > 0) {
         $sprintList = $("#last_sprints_list");
         currSprint = getCurrentSprint(data);
@@ -61,7 +61,7 @@ sSuccess = function(data) {
             }
             $sprintList.append('<li id="z'+i+'"><a  class="'+currSprintClass+'" data-role="button" data-cda-functionAttribute2="'+sprint.backlog_id+'" data-cda-functionAttribute1="'+sprint.id+'" data-cda-executeOnClick="yes" data-cda-function="displaySprint">'+data[i].iteration+'</a></li>');
         }
-        displaySprint(currSprint);
+        //displaySprint(currSprint);
         CustomDataAttributes.setOnClickEvent("#content", this.Content);
         $("#content").trigger("create");
     }
@@ -87,19 +87,34 @@ displaySprint = function(e) {
 sprintDetailSuccess = function(sprint) {
     $("#sprintDetail_startOn").html(new Date(sprint.start_on).toLocaleDateString());
     $("#sprintDetail_updatedAt").html(new Date(sprint.updated_at).toLocaleDateString());
-    EasyBacklog.getStoriesForSprint
+    EasyBacklog.getSprintStories(sprint.id, sprintStoryFail, sprintStorySuccess);
 }
 sprintDetailFail = function(data) {}
 emptySprint = {
     start_on: '',
     updated_at: ''
 }
-storySuccess = function(data) {
+sprintStorySuccess = function(data) {
+    var stories = [];
+    var storyCount = 0;
+
+    // get stories
+    for(var i in data) {
+        EasyBacklog.getStory(data[i].story_id, sprintStoryStoryFail, sprintStoryStorySuccess);
+    }
+
 
 }
-storyFail = function(data) {
+sprintStoryFail = function(data) {
 
 }
+
+var sprintStoryStorySuccess = function(data) {
+    $("#sprintDetail_stories").append('<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-cda-location-param-name="storyId" data-cda-location-param-value="'+data.id+'" data-cda-loadOnClick="yes" data-cda-location="html/storyDetail.html" data-cda-location-section="#content" >As a '+data.as_a+' i want to '+data.i_want_to+' so i can '+data.so_i_can+'</a></li>');
+    CustomDataAttributes.setOnClickEvent("#sprintDetail_stories", window.Content);
+}
+
+var sprintStoryStoryFail = function(data) {storyCount++;}
 </script>
 <div id="backlogSelector">
     <select id="backlogSelect" onChange="changeBacklog()">
@@ -129,7 +144,8 @@ storyFail = function(data) {
         </div>
         <div data-role="collapsible">
             <h3><div id="msg_c_sprintDetail_stories"></div></h3>
-            <div id="sprintDetail_sprints"></div>
+            <ul data-role="listview" id="sprintDetail_stories" data-filter="true">
+            </ul>
         </div>
     </div>
 </div>

@@ -40,3 +40,7 @@ EasyBacklogControllerImpl.prototype.getSprints = function(backlogId, callBackFai
 EasyBacklogControllerImpl.prototype.getSprint = function(backlogId, sprintId, callBackFail, callBackSuccess) {
     this.easyBacklogImpl.call("/backlogs/"+backlogId+"/sprints/"+sprintId+".json", callBackSuccess, callBackFail);
 };
+
+EasyBacklogControllerImpl.prototype.getSprintStories = function(sprintId, callBackFail, callBackSuccess) {
+    this.easyBacklogImpl.call("/sprints/"+sprintId+"/sprint-stories.json", callBackSuccess, callBackFail);
+};
