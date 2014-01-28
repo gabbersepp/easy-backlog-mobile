@@ -92,3 +92,17 @@ EasyBacklogCacheController.prototype.getSprints = function(backlogId, callBackFa
         callBackSuccess(this.cache.get("easybacklog-"+backlogId, "sprints"));
     }
 };
+
+EasyBacklogCacheController.prototype.getSprint = function(backlogId, sprintId, callBackFail, callBackSuccess) {
+    if (typeof this.cache.get("easybacklog-"+sprintId, "sprint") === "undefined") {
+        var c = this.cache;
+        var bId = sprintId;
+        callBackSuccessSave = function(data) {
+            c.set("easybacklog-"+bId, "sprint", data);
+            callBackSuccess(data);
+        }
+        this.easyBacklogImpl.getSprint(backlogId, sprintId, callBackFail, callBackSuccessSave);
+    }else {
+        callBackSuccess(this.cache.get("easybacklog-"+sprintId, "sprint"));
+    }
+};

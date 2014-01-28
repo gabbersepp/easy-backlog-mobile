@@ -1,0 +1,9 @@
+<script type="text/javascript">
+    sprintId = window.Session.get("cda", "sprintId");
+    $("#current_sprint").on("contentLoadReady", function() {
+        $("#sprint").html(sprintId);
+    });
+</script>
+<div id="sprint">
+
+</div>

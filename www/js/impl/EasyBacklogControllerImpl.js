@@ -36,3 +36,7 @@ EasyBacklogControllerImpl.prototype.getStory = function(storyId, callBackFail, c
 EasyBacklogControllerImpl.prototype.getSprints = function(backlogId, callBackFail, callBackSuccess) {
     this.easyBacklogImpl.call("/backlogs/"+backlogId+"/sprints.json", callBackSuccess, callBackFail);
 };
+
+EasyBacklogControllerImpl.prototype.getSprint = function(backlogId, sprintId, callBackFail, callBackSuccess) {
+    this.easyBacklogImpl.call("/backlogs/"+backlogId+"/sprints/"+sprintId+".json", callBackSuccess, callBackFail);
+};

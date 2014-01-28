@@ -14,8 +14,6 @@
 
     $("#content").off("contentLoadReady");
     $("#content").on("contentLoadReady", function(e) {
-        EasyBacklog.setApiKey(Config.get("easybacklog", "apiKey"));
-        EasyBacklog.setAccountId(Config.get("easybacklog", "accountId"));
         EasyBacklog.getBacklogs(backlogsFail, backlogsSuccess);
     });
 </script>

@@ -4,6 +4,8 @@ $("#content").on("contentLoadReady", function(e) {
 	if(typeof Config.get("easybacklog", "apiKey") === "undefined" || Config.get("easybacklog", "apiKey") == null || Config.get("easybacklog", "apiKey").length == 0) {
 		Content.loadContent("html/login.html");
 	}else{
+        EasyBacklog.setApiKey(Config.get("easybacklog", "apiKey"));
+        EasyBacklog.setAccountId(Config.get("easybacklog", "accountId"));
         Content.loadContent("html/start_overview.html")
 	}
 });

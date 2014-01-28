@@ -1,3 +1,144 @@
 <script>
-    $("#content").off("contentLoadReady");
+$("#content").off("afterJQMCreate").on("afterJQMCreate", function() {
+    initScroller();
+});
+
+initScroller = function() {
+    // calculate scroller size
+    var size = 0;
+    $("li[id^='z']").each(function() {
+        size=size+$(this).width();
+    });
+    loaded();
+    $("#scroller").width(size);
+    $("#last_sprints_list").width(size);
+}
+var myScroll;
+function loaded() {
+    myScroll = new iScroll('wrapper');
+}
+
+$(document).on('touchmove', function (e) { e.preventDefault(); });
+
+$("#content").off("contentLoadReady").on("contentLoadReady", function() {
+    EasyBacklog.getBacklogs(bFail, bSuccess);
+});
+
+bFail = function(data) {
+
+}
+
+bSuccess = function(data) {
+    $backlogSelect = $("#backlogSelect");
+    for(i in data) {
+        backlog = data[i];
+        $backlogSelect.append("<option value='"+backlog.id+"'>"+backlog.name+"</option>");
+    }
+    if (data.length > 0) {
+
+    }
+}
+
+changeBacklog = function() {
+    bId = $("#backlogSelect").val();
+    EasyBacklog.getSprints(bId, sFail, sSuccess);
+}
+
+sFail = function() {
+
+}
+sSuccess = function(data) {
+    $("#last_sprints_list").html('');
+    sprintDetailSuccess(emptySprint);
+    if (data.length > 0) {
+        $sprintList = $("#last_sprints_list");
+        currSprint = getCurrentSprint(data);
+        for(i = data.length-1; i >= 0; i--) {
+            sprint = data[i];
+            currSprintClass = '';
+            if (sprint.id == currSprint.id) {
+                currSprintClass = 'scrollerCurrentSprint';
+            }
+            $sprintList.append('<li id="z'+i+'"><a  class="'+currSprintClass+'" data-role="button" data-cda-functionAttribute2="'+sprint.backlog_id+'" data-cda-functionAttribute1="'+sprint.id+'" data-cda-executeOnClick="yes" data-cda-function="displaySprint">'+data[i].iteration+'</a></li>');
+        }
+        displaySprint(currSprint);
+        CustomDataAttributes.setOnClickEvent("#content", this.Content);
+        $("#content").trigger("create");
+    }
+    initScroller();
+}
+getCurrentSprint = function(data) {
+    var currentSprint, lastSprint = data[data.length-1];
+    for(i=data.length-1; i >= 0; i--) {
+        currentSprint = data[i];
+        if (currentSprint.completed_at==null) {
+            lastSprint = currentSprint;
+        }else{
+            break;
+        }
+    }
+    return lastSprint==null?currentSprint:lastSprint;
+}
+displaySprint = function(e) {
+    sprintId = $(e).attr('data-cda-functionAttribute1');
+    backlogId = $(e).attr('data-cda-functionAttribute2');
+    EasyBacklog.getSprint(backlogId, sprintId, sprintDetailFail, sprintDetailSuccess);
+}
+sprintDetailSuccess = function(sprint) {
+    $("#sprintDetail_startOn").html(new Date(sprint.start_on).toLocaleDateString());
+    $("#sprintDetail_updatedAt").html(new Date(sprint.updated_at).toLocaleDateString());
+    EasyBacklog.getStoriesForSprint
+}
+sprintDetailFail = function(data) {}
+emptySprint = {
+    start_on: '',
+    updated_at: ''
+}
+storySuccess = function(data) {
+
+}
+storyFail = function(data) {
+
+}
 </script>
+<div id="backlogSelector">
+    <select id="backlogSelect" onChange="changeBacklog()">
+        <option>Bitte auswählen</option>
+    </select>
+</div>
+<div id="current_sprint">
+    <div data-role="collapsible-set" data-theme="a" data-content-theme="a">
+        <div data-role="collapsible">
+            <h3><div id="msg_c_sprintDetail_dates"></div></h3>
+            <div class="ui-grid-a ui-responsive">
+                <div class="ui-block-a">
+                    <div id="msg_c_sprintDetail_startOn" class="label"></div>
+                </div>
+                <div class="ui-block-b">
+                    <div id="sprintDetail_startOn"></div>
+                </div>
+            </div>
+            <div class="ui-grid-a ui-responsive">
+                <div class="ui-block-a">
+                    <div id="msg_c_sprintDetail_updatedAt" class="label"></div>
+                </div>
+                <div class="ui-block-b">
+                    <div id="sprintDetail_updatedAt"></div>
+                </div>
+            </div>
+        </div>
+        <div data-role="collapsible">
+            <h3><div id="msg_c_sprintDetail_stories"></div></h3>
+            <div id="sprintDetail_sprints"></div>
+        </div>
+    </div>
+</div>
+<div id="last_sprints">
+    <div id="wrapper">
+        <div id="scroller">
+            <ul id="last_sprints_list">
+
+            </ul>
+        </div>
+    </div>
+</div>

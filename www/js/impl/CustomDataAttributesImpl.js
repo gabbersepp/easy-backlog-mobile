@@ -53,7 +53,7 @@ CustomDataAttributesImpl.prototype.setOnClickEvent = function(withinDivId, conte
 				
 				var fn = window[$e.attr("data-cda-function")];
 				if(typeof fn === 'function') {
-					fn();
+					fn($e);
 				}
 
 			});

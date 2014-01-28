@@ -46,5 +46,6 @@ Content.prototype.loadIntoSection = function(path, withinDivId) {
 		}
 		// used to apply jquerymobile
 		$(withinDivId).trigger("create");
+        $(withinDivId).trigger("afterJQMCreate").off("afterJQMCreate");
 	});
 };
