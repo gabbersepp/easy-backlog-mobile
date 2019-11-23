@@ -7,7 +7,7 @@ With this project I want to learn how to create apps using [PhoneGap](http://pho
 
 ### Libraries
 The project uses jQuery Mobile.
-As test framework i decided to go with [Jasmine](http://pivotal.github.io/jasmine/).
+As test framework i decided to go with [Jasmine](https://jasmine.github.io/).
 With [Jasmine-jQuery](https://github.com/velesin/jasmine-jquery) we can extend the functionallity of Jasmine with fixtures loading and much more.
 
 ### How to start with the App?
